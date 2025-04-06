@@ -37,29 +37,58 @@ const notas = [
   { titulo: "Revisión caja", fecha: "2025-03-29", descripcion: "Balance y arqueo diario.", color: "#a1887f" },
 ];
 
-const grid = document.getElementById("notasGrid");
 
-notas.forEach((nota, index) => {
-  const card = document.createElement("div");
-  card.classList.add("nota-card");
-  card.style.backgroundColor = nota.color;
 
-  card.innerHTML = `
-    <h3>${nota.titulo}</h3>
-    <p class="fecha">${nota.fecha}</p>
-    <p class="descripcion">${nota.descripcion}</p>
-    <div class="nota-actions">
-      <button class="eliminar-btn" onclick="eliminarNota(${index})">Eliminar</button>
-      <input type="checkbox" class="checkbox-realizada" title="Marcar como realizada">
-    </div>
-  `;
+document.addEventListener('DOMContentLoaded', async () => {
+  const notasContainer = document.querySelector('.notas-container');
 
-  grid.appendChild(card);
-});
+  try {
+    const response = await fetch('http://localhost:3000/api/notas');
+    const notas = await response.json();
 
-function eliminarNota(index) {
-  const notaCards = document.querySelectorAll(".nota-card");
-  if (notaCards[index]) {
-    notaCards[index].remove();
+    notasContainer.innerHTML = ''; // Limpiar contenido anterior
+
+    notas.forEach(nota => {
+      const notaCard = document.createElement('div');
+      notaCard.className = 'nota-card';
+      notaCard.style.backgroundColor = nota.color || '#333'; // Color por defecto
+
+      notaCard.innerHTML = `
+        <div class="nota-titulo">${nota.titulo}</div>
+        <div class="nota-fecha">${new Date(nota.fecha_creacion).toLocaleDateString()}</div>
+        <div class="nota-descripcion">${nota.descripcion}</div>
+        <div class="nota-acciones">
+          <button class="btn-eliminar" data-id="${nota.id}">🗑</button>
+          <input type="checkbox" class="checkbox-realizada" data-id="${nota.id}" ${nota.realizada ? 'checked' : ''}>
+        </div>
+      `;
+
+      notasContainer.appendChild(notaCard);
+    });
+
+    // Delegar eventos para eliminar o actualizar estado
+    notasContainer.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('btn-eliminar')) {
+        const id = e.target.dataset.id;
+        await fetch(`http://localhost:3000/api/notas/${id}`, { method: 'DELETE' });
+        location.reload();
+      }
+    });
+
+    notasContainer.addEventListener('change', async (e) => {
+      if (e.target.classList.contains('checkbox-realizada')) {
+        const id = e.target.dataset.id;
+        const realizada = e.target.checked;
+        await fetch(`http://localhost:3000/api/notas/${id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ realizada })
+        });
+      }
+    });
+
+  } catch (error) {
+    console.error('Error cargando notas:', error);
+    notasContainer.innerHTML = '<p style="color: red;">Error cargando notas.</p>';
   }
-}
+});

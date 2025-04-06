@@ -1,0 +1,70 @@
+.main-content {
+  padding: 2rem;
+}
+
+.clientes-container {
+  padding: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+#cliente-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#cliente-form button {
+  grid-column: span 2;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#cliente-form button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#cliente-form button#limpiar-form {
+  background-color: #ccc;
+  color: black;
+}
+
+#filtro-clientes {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #4CAF50;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+td button {
+  margin-right: 5px;
+  cursor: pointer;
+}
