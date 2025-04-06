@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Gestión - Droguería</title>
+  <link rel="stylesheet" href="../style-global.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2 class="logo">💊 Droguería</h2>
+      <nav class="menu">
+        <a href="/PaginaInicio/index.html" class="menu-item inicio">Inicio</a>
+        <a href="../PaginaCliente/index.html" class="menu-item clientes">Gestionar Clientes</a>
+        <a href="../PaginaInventario/index.html" class="menu-item inventario">Gestionar Inventario</a>
+        <a href="../PaginaVenta/index.html" class="menu-item venta">🛒 Generar Venta</a>
+        <a href="../PaginaReporte/index.html" class="menu-item reporte">Informe de Ventas</a>
+      </nav>
+
+      <div class="notas-menu">
+        <a href="#notas" class="menu-item notas">📝 Notas</a>
+      </div>
+    </aside>
+    <main class="main-content">
+      <h1>Bienvenido al Sistema de Gestión</h1>
+      <p>Selecciona una opción del menú para comenzar.</p>
+
+      <section id="notas" class="notas-section">
+        <h2>📝 Notas del día</h2>
+        <ul id="listaNotas">
+          <li>No olvides verificar el inventario de dispositivos médicos.</li>
+          <li>Actualizar la base de datos de nuevos clientes.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

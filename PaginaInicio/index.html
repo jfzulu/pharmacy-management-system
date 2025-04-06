@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Gestión - Droguería</title>
+  <link rel="stylesheet" href="../style-global.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2 class="logo">💊 Droguería</h2>
+      <nav class="menu">
+        <a href="/PaginaInicio/index.html" class="menu-item inicio">Inicio</a>
+        <a href="../PaginaCliente/index.html" class="menu-item clientes">Gestionar Clientes</a>
+        <a href="../PaginaInventario/index.html" class="menu-item inventario">Gestionar Inventario</a>
+        <a href="../PaginaVenta/index.html" class="menu-item venta">🛒 Generar Venta</a>
+        <a href="../PaginaReporte/index.html" class="menu-item reporte">Informe de Ventas</a>
+      </nav>
+
+      <div class="notas-menu">
+        <a href="../PaginaNotas/index.html" class="menu-item notas">📝 Notas</a>
+      </div>
+    </aside>
+    <main class="main-content">
+      <h1>Bienvenido al Sistema de Gestión</h1>
+      <p>Selecciona una opción del menú para comenzar.</p>
+
+      <section class="notas-grid" id="notasGrid">
+        <!-- Las notas se insertarán aquí dinámicamente -->
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
